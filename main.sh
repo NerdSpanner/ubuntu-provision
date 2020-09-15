@@ -12,10 +12,11 @@ read -p "Set-up elastic stack?: " setupelk
 echo $setupelk
 if [[ $setupelk == *"y"* ]]
 then
-        sudo apt-get install apt-transport-https
+        apt -y install apt-transport-https
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
         echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
-        sudo apt-get update && sudo apt-get install metricbeat filebeat
+        apt -y update
+	apt -y install metricbeat filebeat
 
         read -p "Remote IP? (public ip) " elkip
         echo $elkip
