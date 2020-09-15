@@ -8,7 +8,7 @@ cp ./50unattended-upgrades /etc/apt/apt.conf.d/
 cp ./20auto-upgrades /etc/apt/apt.conf.d/
 unattended-upgrades --dry-run --debug
 
-read -s -p "Set-up elastic stack?: " setupelk
+read -p "Set-up elastic stack?: " setupelk
 if [[setupelk == "y]]
 then
         sudo apt-get install apt-transport-https
