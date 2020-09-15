@@ -9,7 +9,8 @@ cp ./20auto-upgrades /etc/apt/apt.conf.d/
 unattended-upgrades --dry-run --debug
 
 read -p "Set-up elastic stack?: " setupelk
-if [$setupelk == "y"]
+echo $setupelk
+if [$setupelk == *"y"*]
 then
         sudo apt-get install apt-transport-https
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
