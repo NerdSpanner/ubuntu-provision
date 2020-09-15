@@ -9,15 +9,13 @@ cp ./20auto-upgrades /etc/apt/apt.conf.d/
 unattended-upgrades --dry-run --debug
 
 read -s -p "Set-up elastic stack?: " setupelk
-if [setupselk == "y]
+if [[setupselk == "y]]
 then
         sudo apt-get install apt-transport-https
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
         echo "deb https://artifacts.elastic.co/packages/7.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
         sudo apt-get update && sudo apt-get install metricbeat filebeat
 
-        read -p "This computers name? (server1) " thishost
-        echo $elkip
         read -p "Remote IP? (public ip) " elkip
         echo $elkip
         read -p "Remote Hostname? (asdf.com) " elkhost
